@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  web:
+    image: buzzard_web:latest
+    build: 
+      context: ./build/web
+    ports:
+      - 80:80
+    volumes:
+      - ./src/web:/var/www
+    depends_on:
+      - db
+    networks:
+      - buzzard
+  db:
+    image: mariadb
+    environment:
+      MARIADB_ROOT_PASSWORD: root  
+      MARIADB_DATABASE: test_drupal
+      MARIADB_USER: test
+      MARIADB_PASSWORD: test
+    networks:
+      - buzzard
+    volumes: 
+      - ./data/db:/var/lib/mysql
+  phpmyadmin:
+    image: arm64v8/phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+    networks:
+      - buzzard
+    depends_on:
+      - db
+    ports:
+      - 8081:80      
+
+networks:
+  buzzard:
+    driver: bridge    
