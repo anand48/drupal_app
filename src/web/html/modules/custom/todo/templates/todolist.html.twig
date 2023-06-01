@@ -1,0 +1,38 @@
+<h3>This is a twig template to output Todo List</h3>
+
+<h4> {{ title }} </h4>
+
+<table>
+<tr>
+{% for h in header %}
+<th>{{ h }}</th>
+{% endfor %}
+<th>Edit</th>
+<th>Delete</th>
+</tr>
+
+
+{% for r in rows %}
+<tr>
+{% for fields in r %}
+{% for c in fields %}
+<td>{{ c }}</td>
+{% endfor %}
+<td><a href="/tasks/{{ fields[0] }}/edit">Edit Task No. {{ fields[0]}}</a></td>
+<td><a href="/tasks/{{ fields[0] }}/delete">Delete</a></td>
+{% endfor %}
+
+{% endfor %}
+</tr> 
+</table>
+
+{# {% for r in rows %}
+{% for fields in r %}
+{% for c in fields %}
+<p>{{ c }}</p>
+{% endfor %}
+{% endfor %}
+{% endfor %}
+
+{{ dump(header) }}
+{{ dump(rows) }} #}

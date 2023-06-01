@@ -1,0 +1,24 @@
+<?php
+function todo_schema() {
+  $schema['tasks'] = [
+    'description' => 'Stores module data as key/value pairs per user.',
+    'fields' => [
+      'tid' => [
+        'description' => 'The task id for this employee',
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'task_list' => [
+        'description' => 'The name of the module declaring the variable.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+    ],
+    'primary key' => [
+      'tid',
+    ],
+  ];
+  return $schema;
+}

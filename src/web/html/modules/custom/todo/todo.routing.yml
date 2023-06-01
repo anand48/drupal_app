@@ -1,0 +1,41 @@
+todo.my_page:
+  path: '/tasks/page'
+  defaults:
+    _controller: '\Drupal\todo\Controller\TodoController::myPage'
+    _title: 'Custom Todo list landing page'
+  requirements:
+    _permission: 'access content'
+
+todo.display_tasks:
+  path: '/tasks/display'
+  defaults:
+    _controller: '\Drupal\todo\Controller\TodoController::getDetails'
+    _title: 'Custom Todo list landing page'
+  requirements:
+    _permission: 'access content'
+  # options:
+  #   no_cache: 'TRUE'
+
+todo.form:
+  path: '/form/todo'
+  defaults:
+    _form: '\Drupal\todo\Form\TodoForm'
+    _title: 'Custom Form page'
+  requirements:
+    _permission: 'access content'
+
+todo.edit.form:
+  path: '/tasks/{slug}/edit'
+  defaults:
+    _form: '\Drupal\todo\Form\EditTodoForm'
+    _title: 'Edit form'
+  requirements:
+    _permission: 'access content'
+
+todo.delete.form:
+  path: '/tasks/{id}/delete'
+  defaults:
+    _form: '\Drupal\todo\Form\DeleteTodoForm'
+    _title: 'Delete form'
+  requirements:
+    _permission: 'access content'
