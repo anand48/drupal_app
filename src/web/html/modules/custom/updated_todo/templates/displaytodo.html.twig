@@ -1,0 +1,18 @@
+<h3>Task list</h3>
+
+<table>
+    <tr>
+        <th>Tasks</th>
+        <th>Edit</th>
+        <th>Delete</th>
+</tr>
+
+{% for r in results %}
+<tr>
+    <td>{{ r.task_list }}</td>
+    <td><a style="text-decoration:none;background: lightgreen;border-radius: 20px;padding: 6px;color: white;" href="/task/{{ r.task_id }}/edit">Edit</a></td>
+    <td><a style="text-decoration:none;background: red;border-radius: 20px;padding: 6px;color: white;" href="/task/{{ r.task_id }}/delete">Delete</a></td>
+</tr>
+{% endfor %}
+
+</table>

@@ -20,7 +20,7 @@ todo.form:
   path: '/form/todo'
   defaults:
     _form: '\Drupal\todo\Form\TodoForm'
-    _title: 'Custom Form page'
+    _title: 'TODO LIST'
   requirements:
     _permission: 'access content'
 

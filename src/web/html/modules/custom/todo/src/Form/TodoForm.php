@@ -28,7 +28,7 @@ class TodoForm extends FormBase{
       public function buildForm(array $form, FormStateInterface $form_state){
          $form['todo_text'] = [
              '#type' => 'textfield',
-             '#title' => t('Please enter todo task'),
+             '#title' => t('Please enter a task'),
              '#size' => 25,
              '#required' => TRUE,
          ];
@@ -46,7 +46,7 @@ class TodoForm extends FormBase{
     public function validateForm(array &$form, FormStateInterface $form_state) {
 
         if (strlen($form_state->getValue('todo_text')) < 5) {
-          $form_state->setErrorByName('todo_text', $this->t('Todos is too short.'));
+          $form_state->setErrorByName('todo_text', $this->t('Task is too short.'));
         }
   
       }

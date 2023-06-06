@@ -1,0 +1,31 @@
+updated_todo.create:
+  path: '/todo/create'
+  defaults:
+    _form: '\Drupal\updated_todo\Form\CreateTodoForm'
+    _title: 'Add a task'
+  requirements:
+    _permission: 'access content'
+
+updated_todo.display:
+  path: '/todo/display'
+  defaults:
+    _controller: '\Drupal\updated_todo\Controller\DisplayTodoController::getTasks'
+    _title: 'Your Task List'
+  requirements:
+    _permission: 'access content'
+
+updated_todo.edit:
+  path: 'task/{id}/edit'
+  defaults:
+    _form: '\Drupal\updated_todo\Form\EditTaskForm'
+    _title: 'Edit Task'
+  requirements:
+    _permission: 'access content'
+
+updated_todo.delete:
+  path: 'task/{id}/delete'
+  defaults:
+    _form: '\Drupal\updated_todo\Form\DeleteTaskForm'
+    _title: 'Delete Task'
+  requirements:
+    _permission: 'access content'

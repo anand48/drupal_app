@@ -343,6 +343,15 @@
                 0 => '10.0.9',
             ),
         ),
+        'drupal/examples' => array(
+            'pretty_version' => '4.0.2',
+            'version' => '4.0.2.0',
+            'reference' => '4.0.2',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../html/modules/contrib/examples',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drupal/recommended-project' => array(
             'pretty_version' => '1.0.0+no-version-set',
             'version' => '1.0.0.0',

@@ -1,0 +1,11 @@
+<?php
+/**
+ * Implements hook_theme().
+ */
+function updated_todo_theme($existing, $type, $theme, $path) {
+  return [
+    'displaytodo' => [
+      'variables' => ['results' => [],],
+    ],
+  ];
+}

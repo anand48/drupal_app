@@ -1,0 +1,31 @@
+<?php
+function updated_todo_schema() {
+  $schema['todo'] = [
+    'description' => 'Stores module data as key/value pairs per user.',
+    'fields' => [
+      'task_id' => [
+        'description' => 'The task id for this employee',
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'task_list' => [
+        'description' => 'The name of the module declaring the variable.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'current_user' => [
+          'description' => 'The name of the current user',
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => TRUE,
+          'default' => '',
+      ],
+    ],
+    'primary key' => [
+      'task_id',
+    ],
+  ];
+  return $schema;
+}

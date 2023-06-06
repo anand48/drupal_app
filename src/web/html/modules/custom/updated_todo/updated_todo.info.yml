@@ -1,0 +1,4 @@
+name: 'Todo List Version 2'
+type: module
+core_version_requirement: ^10
+description: "This is a newer version of the Todo list app created using Drupal 10"
