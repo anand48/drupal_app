@@ -25,22 +25,22 @@
   * @param \Drupal\Core\Session\AccountInterface $currentUser
   */
 
-  public function __construct(AccountProxy $currentUser, Connection $connection){
-    $this->currentUser = $currentUser; 
-	$this->connection = $connection;
+    public function __construct(AccountProxy $currentUser, Connection $connection){
+      $this->currentUser = $currentUser; 
+	  $this->connection = $connection;
 	}
 
 	/**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container) {
-    // Instantiates this form class.
-    return new static(
-      // Load the service required to construct this class.
-      $container->get('current_user'),
-	  $container->get('database')
-    );
-  }
+    public static function create(ContainerInterface $container) {
+      // Instantiates this form class.
+      return new static(
+        // Load the service required to construct this class.
+        $container->get('current_user'),
+	    $container->get('database')
+      );
+    }
 
     
      /**
@@ -95,10 +95,10 @@
          $value = $form_state->get('para');
          $field = $form_state->getValues();
          $fields['task_list'] = $submitted_task;
-
          
          $this->connection->update('todo')->fields(['task_list' => $submitted_task])->condition('task_id', $value)->execute();
          $this->messenger()->addMessage(t("Successfully updated task."));
+         // @TODO: Clear cache per user.
          Cache::invalidateTags(['todolist_tag']);
          $url = Url::fromRoute('updated_todo.display');
          $form_state->setRedirectUrl($url);

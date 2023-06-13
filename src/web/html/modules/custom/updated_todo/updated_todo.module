@@ -9,3 +9,9 @@ function updated_todo_theme($existing, $type, $theme, $path) {
     ],
   ];
 }
+
+function updated_todo_uninstall(){
+  //Drop the table
+  $schema = \Drupal::database()->schema();
+  $schema->dropTable('todo');
+}

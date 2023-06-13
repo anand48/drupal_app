@@ -63,6 +63,7 @@ class DeleteTaskForm extends ConfirmFormBase {
     
     
     $num_deleted = $this->connection->delete('todo')->condition('task_id', $this->id)->execute();
+    // @TODO: Clear cache per user.
     Cache::invalidateTags(['todolist_tag']);
     $url = Url::fromRoute('updated_todo.display');
     $form_state->setRedirectUrl($url);

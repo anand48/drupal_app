@@ -29,7 +29,7 @@ class DisplayTodoController extends ControllerBase{
 
   public function __construct(AccountProxy $currentUser, Connection $connection){
     $this->currentUser = $currentUser; 
-	$this->connection = $connection;
+		$this->connection = $connection;
 	}
 
 	/**
@@ -40,27 +40,32 @@ class DisplayTodoController extends ControllerBase{
     return new static(
       // Load the service required to construct this class.
       $container->get('current_user'),
-	  $container->get('database')
+	  	$container->get('database')
     );
   }
 
 public function getTasks(){
-        
+  
+	// @TODO: Move query & results to a different function.
   $query = $this->connection->select('todo', 't');
   $query->fields('t', ['task_list']);
 	$query->fields('t', ['task_id']);
   $query->condition('t.current_user', $this->currentUser->getDisplayName());
+	
 
   $results = $query->execute()->fetchAll(\PDO::FETCH_ASSOC);
+	$this->messenger()->addMessage(t("query is running."));
 
 	$output = [
 		'#theme' => 'displaytodo',
 		'#results' => $results,
 		'#cache' => [
+			// @TODO: Use custom cache tags for query results.
 			'tags' => ['todolist_tag'],
 		],
 	];
 
+	// @TODO: Remove unnecessary tags.
 	Cache::invalidateTags(['todo_tag']);
 
 	//dump($results);die;

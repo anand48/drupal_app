@@ -84,6 +84,7 @@ class CreateTodoForm extends FormBase{
 		$fields['task_list'] = $added_task['todo_task'];
 		$fields['current_user'] = $this->currentUser->getDisplayName();
 
+    // @TODO: Clear cache per user.
 		$this->connection->insert('todo')->fields($fields)->execute();
 		$this->messenger()->addMessage(t("Successfully added task"));
   }
